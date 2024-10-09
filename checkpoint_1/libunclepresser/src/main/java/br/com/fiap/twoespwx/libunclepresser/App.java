@@ -1,16 +1,3 @@
-/* 
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- *
- * Grupo: ABOBRINHA
- * Autores: 
- *      - David Denunci  (RM98603)   -  rm98603@fiap.com.br
- *      - Fernanda Saito (RM551105)   -   rm551104@fiap.com.br
- *      - Lucas de Toledo  (RM97913)-   rm97913@fiap.com.br
- *      - Pedro Gava (RM551043) -   rm551043@fiap.com.br
- */
-
 package br.com.fiap.twoespwx.libunclepresser;
 
 import java.io.IOException;
@@ -21,15 +8,10 @@ import java.nio.file.Paths;
 public class App {
     public static void main(String[] args) {
         System.out.println("LIB UNCLE PRESSER - GRUPO ABOBRINHA");
-        // Método principal
 
-        if (args.length != 2) {
-            System.out.println("Usage: java -jar <path/to/jar/file> <path/to/input> <path/to/output>");
-            return;
-        }
-
-        String inputFilePath = args[0];
-        String outputFilePath = args[1];
+        // Caminhos fixos para entrada e saída
+        String inputFilePath = "checkpoint_1\\libunclepresser\\inputs\\input1.txt";
+        String outputFilePath = "checkpoint_1\\libunclepresser\\outputs\\OUTPUT1.TXT";
 
         try {
             // Ler o arquivo de entrada
@@ -72,7 +54,7 @@ public class App {
     // Método para exibir um resumo da compressão
     public static void displaySummary(String inputFile, String outputFile, String originalData, String compressedData) {
         System.out.println(" -----------------------------------------------------------");
-        System.out.println("|           LIB UNCLE PRESSER - GRUPO BATATA-DOCE           |");
+        System.out.println("|           LIB UNCLE PRESSER - GRUPO ABOBRINHA             |");
         System.out.println("|-----------------------------------------------------------|");
         System.out.printf("| INPUT  FILENAME: %-45s |\n", inputFile);
         System.out.printf("| OUTPUT FILENAME: %-45s |\n", outputFile);
