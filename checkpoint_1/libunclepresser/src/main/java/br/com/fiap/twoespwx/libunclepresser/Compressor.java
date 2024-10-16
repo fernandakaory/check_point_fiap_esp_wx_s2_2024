@@ -6,45 +6,45 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Compressor {
-    public static String gera_sequencia() {
+
+    // Método para gerar uma sequência aleatória de nucleotídeos
+    public static String generateSequence() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         
         System.out.print("Digite a quantidade de nucleotídeos que deseja gerar: ");
-        int quantidade = scanner.nextInt();
+        int quantity = scanner.nextInt();
         
-        char[] sequencia = new char[quantidade];
-        char[] nucleotideos = {'A', 'C', 'G', 'T'};
+        char[] sequence = new char[quantity];
+        char[] nucleotides = {'A', 'C', 'G', 'T'};
         
         // Primeiro nucleotídeo é escolhido aleatoriamente
-        sequencia[0] = nucleotideos[random.nextInt(nucleotideos.length)];
+        sequence[0] = nucleotides[random.nextInt(nucleotides.length)];
         
         // Definindo uma probabilidade de repetir o nucleotídeo anterior
-        double probabilidadeDeRepetir = 0.7;  // 70% de chance de repetir o nucleotídeo anterior
+        double repeatProbability = 0.7;  // 70% de chance de repetir o nucleotídeo anterior
 
-        for (int i = 1; i < quantidade; i++) {
-            if (random.nextDouble() < probabilidadeDeRepetir) {
+        for (int i = 1; i < quantity; i++) {
+            if (random.nextDouble() < repeatProbability) {
                 // Repetir o nucleotídeo anterior
-                sequencia[i] = sequencia[i - 1];
+                sequence[i] = sequence[i - 1];
             } else {
                 // Escolher um novo nucleotídeo aleatório
-                sequencia[i] = nucleotideos[random.nextInt(nucleotideos.length)];
+                sequence[i] = nucleotides[random.nextInt(nucleotides.length)];
             }
         }
 
         // Exibir a sequência gerada (apenas para debug)
         System.out.print("Sequência de nucleotídeos gerada: ");
-        for (char nucleo : sequencia) {
+        for (char nucleo : sequence) {
             System.out.print(nucleo);
         }
         System.out.println(); // Nova linha após a sequência gerada
 
         scanner.close();
-        return new String(sequencia);
+        return new String(sequence);
     }
 
-
-    // referencia : https://www.dca.fee.unicamp.br/~martino/disciplinas/ea978/na4.pdf
     // Método que realiza a compressão usando Run-Length Encoding (RLE)
     public static String compressRLE(String data) {
         StringBuilder compressed = new StringBuilder();
@@ -66,43 +66,38 @@ public class Compressor {
         return compressed.toString();
     }
 
-    public static int[] CountFrequency(String entrada) {
-        int freqA = 0;
-        int freqG = 0;
-        int freqT = 0;
-        int freqC = 0;
-        
-        
+    // Método para contar a frequência de nucleotídeos
+    public static void countFrequency(String input) {
+        freqA = 0;
+        freqC = 0;
+        freqG = 0;
+        freqT = 0;
 
-        String[] entradaSplitada = entrada.split("");
+        String[] inputSplit = input.split("");
 
-        for (int i = 0; i < entradaSplitada.length; i++) {
-            String caracter = entradaSplitada[i];
+        for (int i = 0; i < inputSplit.length; i++) {
+            String nucleotide = inputSplit[i];
 
-            if (caracter.equals("A")) {
+            if (nucleotide.equals("A")) {
                 freqA++;
             }
 
-            if (caracter.equals("G")) {
+            if (nucleotide.equals("C")) {
                 freqC++;
             }
 
-            if (caracter.equals("T")) {
-                freqT++;
-            }
-
-            if (caracter.equals("C")) {
+            if (nucleotide.equals("G")) {
                 freqG++;
             }
-        }
 
-        // Retorna as frequências como um array de inteiros
-        return new int[]{freqA, freqC, freqT, freqG};
+            if (nucleotide.equals("T")) {
+                freqT++;
+            }
+        }
     }
 
-    // referencia: https://www.devmedia.com.br/amp/leitura-e-escrita-de-arquivos-de-texto-em-java/25529
     // Método para leitura usando InputStreamReader e BufferedReader
-    public static String InputReader(String path) throws IOException {
+    public static String inputReader(String path) throws IOException {
         BufferedReader buffRead = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
         StringBuilder sb = new StringBuilder();
         String line;
@@ -114,7 +109,7 @@ public class Compressor {
     }
 
     // Método para escrita usando OutputStreamWriter e BufferedWriter
-    public static void OutputWriter(String path, String content) throws IOException {
+    public static void outputWriter(String path, String content) throws IOException {
         BufferedWriter buffWrite = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), StandardCharsets.UTF_8));
         buffWrite.write(content);
         buffWrite.close();
@@ -136,13 +131,13 @@ public class Compressor {
         System.out.println("|                                                           |");
 
         // Chamada ao método de contagem de frequências
-        int[] frequencias = CountFrequency(originalData);
+        countFrequency(originalData);
 
         // Exibindo as frequências calculadas
-        System.out.printf("| A: %d (%.2f%%)                                              |\n", frequencias[0], (frequencias[0] * 100.0 / originalData.length()));
-        System.out.printf("| C: %d (%.2f%%)                                              |\n", frequencias[1], (frequencias[1] * 100.0 / originalData.length()));
-        System.out.printf("| T: %d (%.2f%%)                                              |\n", frequencias[2], (frequencias[2] * 100.0 / originalData.length()));
-        System.out.printf("| G: %d (%.2f%%)                                              |\n", frequencias[3], (frequencias[3] * 100.0 / originalData.length()));
+        System.out.printf("| A: %d (%.2f%%)                                              |\n", freqA, (freqA * 100.0 / originalData.length()));
+        System.out.printf("| C: %d (%.2f%%)                                              |\n", freqC, (freqC * 100.0 / originalData.length()));
+        System.out.printf("| T: %d (%.2f%%)                                              |\n", freqT, (freqT * 100.0 / originalData.length()));
+        System.out.printf("| G: %d (%.2f%%)                                              |\n", freqG, (freqG * 100.0 / originalData.length()));
         System.out.println("|                                                           |");
 
         double compressionRate = (compressedData.length() * 1.0) / originalData.length();
@@ -153,5 +148,10 @@ public class Compressor {
         System.out.println("| SCORE: WELL-DONE                                          |");
         System.out.println(" -----------------------------------------------------------");
     }
-}    
 
+    // Atributos para contagem de nucleotídeos
+    public static int freqA;
+    public static int freqC;
+    public static int freqG;
+    public static int freqT;
+}

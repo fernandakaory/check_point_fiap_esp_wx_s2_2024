@@ -7,22 +7,22 @@ public class App {
         System.out.println("LIB UNCLE PRESSER - GRUPO ABOBRINHA");
 
         // Gerar e salvar a sequência de nucleotídeos
-        String nucleotides = Compressor.gera_sequencia();
+        String nucleotides = Compressor.generateSequence();
         String inputFilePath = "checkpoint_1\\libunclepresser\\inputs\\input1.txt";
         String outputFilePath = "checkpoint_1\\libunclepresser\\outputs\\OUTPUT1.TXT";
 
         try {
             // Escrever a sequência de nucleotídeos no arquivo de entrada
-            Compressor.OutputWriter(inputFilePath, nucleotides);
+            Compressor.outputWriter(inputFilePath, nucleotides);
 
             // Ler o arquivo de entrada usando BufferedReader
-            nucleotides = Compressor.InputReader(inputFilePath);
+            nucleotides = Compressor.inputReader(inputFilePath);
 
             // Compressão usando o algoritmo RLE
             String compressedData = Compressor.compressRLE(nucleotides);
 
             // Escrever a saída no arquivo de saída
-            Compressor.OutputWriter(outputFilePath, compressedData);
+            Compressor.outputWriter(outputFilePath, compressedData);
 
             // Exibir informações sobre o processo
             Compressor.displaySummary(inputFilePath, outputFilePath, nucleotides, compressedData);
