@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Compressor {
-    // declaração de variáveis globais para calculo de frequencia
+    // declaração de atributos para calculo de frequencia
     public static int freqA;
     public static int freqC;
     public static int freqG;
