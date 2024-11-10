@@ -142,7 +142,7 @@ public class Compressor {
 
         double compressionRate = (compressedData.length() * 1.0) / originalData.length();
         System.out.printf("| COMPRESSION RATE: ~%.2f%%                                   |\n", (1 - compressionRate) * 100);
-        System.out.printf("| OUTPUT FILE SIZE: %d BYTES                                  |\n", compressedData.length());
+        System.out.printf("| OUTPUT SIZE: %d CHARACTERS                                |\n", compressedData.length());
         System.out.println("|                                                           |");
         System.out.println(" -----------------------------------------------------------");
         System.out.println("| SCORE: WELL-DONE                                          |");
