@@ -11,7 +11,7 @@ As funções principais foram agrupadas em uma nova classe chamada `Compressor` 
 
 **Compressão da Sequência (RLE):** A função `compressRLE()` realiza a compressão da sequência usando o método RLE. Esse método detecta repetições consecutivas e as substitui por uma versão compacta (nucleotídeo seguido pela contagem de repetições). Essa compressão é especialmente eficaz em sequências com muitos caracteres repetidos.
 
-**Cálculo de Frequências: O método countFrequency()** analisa a sequência para calcular a frequência de cada nucleotídeo (A, C, G, T), exibindo esses dados no resumo final.
+**Cálculo de Frequências:** O método countFrequency() analisa a sequência para calcular a frequência de cada nucleotídeo (A, C, G, T), exibindo esses dados no resumo final.
 
 **Leitura e Escrita de Arquivos:** O programa permite a leitura de sequências a partir de arquivos de texto e a gravação da sequência comprimida em um novo arquivo. Para isso, os métodos `inputReader()` e `outputWriter()` implementam operações de leitura e escrita de maneira eficiente, utilizando BufferedReader e BufferedWriter.
 

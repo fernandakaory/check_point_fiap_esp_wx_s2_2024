@@ -13,7 +13,7 @@ public class Compressor {
     public static int freqT;
 
     // gera a sequeência de nucleotídeo de entrada
-    public static String generateSequence() {
+    public static String generate() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         

@@ -1,8 +1,11 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Generator {
-    public static String gera_sequencia() {
+public interface Generator {
+    public static void main(String[] args) {
+        generate();
+    }
+    public static String generate() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         

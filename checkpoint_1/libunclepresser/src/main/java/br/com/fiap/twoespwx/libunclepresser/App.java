@@ -23,7 +23,7 @@ public class App {
 
         // gera e salva a sequencia de nucleotideos
         // definição dos caminhos dos txts de entrada e saída
-        String nucleotides = Compressor.generateSequence();
+        String nucleotides = Compressor.generate();
         String inputFilePath = "checkpoint_1\\libunclepresser\\inputs\\input1.txt";
         String outputFilePath = "checkpoint_1\\libunclepresser\\outputs\\OUTPUT1.TXT";
 
